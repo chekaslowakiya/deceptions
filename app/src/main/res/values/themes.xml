@@ -1,0 +1,35 @@
+<resources>
+    <style name="Theme.Base" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">#80E9E8F0</item>
+
+        <item name="colorPrimary">@color/pink_500</item>
+        <item name="colorPrimaryVariant">@color/pink_700</item>
+        <item name="colorOnPrimary">@color/bg_white</item>
+        <item name="colorSecondary">@color/violet_400</item>
+        <item name="colorSecondaryVariant">@color/violet_700</item>
+        <item name="colorOnSecondary">@color/bg_black</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+
+        <item name="android:ambientShadowAlpha">0.08</item>
+        <item name="android:spotShadowAlpha">0.08</item>
+    </style>
+
+    <style name="Theme.Saikou" parent="Theme.Base">
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Saikou.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Saikou.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Saikou.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

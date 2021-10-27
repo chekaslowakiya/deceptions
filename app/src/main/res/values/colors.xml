@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="pink_200">#FF5DAE</color>
+    <color name="pink_500">#FF007F</color>
+    <color name="pink_700">#C50053</color>
+    <color name="violet_400">#7366FF</color>
+    <color name="violet_700">#3D3DCC</color>
+    <color name="bg_black">#0F081F</color>
+    <color name="bg_white">#E9E8F0</color>
+    <color name="bg">@color/bg_white</color>
+    <color name="nav_bg">#fff</color>
+    <color name="nav_tab">#40000000</color>
+    <color name="nav_tab_disabled">#19000000</color>
+</resources>
