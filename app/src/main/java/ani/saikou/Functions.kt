@@ -13,9 +13,8 @@ import android.view.WindowManager
 fun initActivity(window:Window,view:View?=null){
 //    window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
     WindowCompat.setDecorFitsSystemWindows(window, false)
-    if (view!=null){
+    if (view!=null)
         viewInset(view)
-    }
 }
 
 fun viewInset(view:View){
