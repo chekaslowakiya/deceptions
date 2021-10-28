@@ -7,8 +7,13 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import android.view.ViewGroup.MarginLayoutParams
-import android.view.WindowManager
 
+const val buildDebug = true
+
+fun logger(e:Any){
+    if(buildDebug)
+        println(e)
+}
 
 fun initActivity(window:Window,view:View?=null){
 //    window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
