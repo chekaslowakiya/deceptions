@@ -8,6 +8,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import nl.joery.animatedbottombar.AnimatedBottomBar
+import android.content.Intent
+import android.net.Uri
+import ani.saikou.anilist.anilist
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         initActivity(window,findViewById(R.id.navbar_container))
+        anilist.getSavedToken(this)
 
         val navbar = findViewById<AnimatedBottomBar>(R.id.navbar)
         val viewPager = findViewById<ViewPager2>(R.id.viewpager)
@@ -25,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         viewPager.post { viewPager.setCurrentItem(1, false) }
     }
 }
+
 class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
 
