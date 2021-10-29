@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">Saikou</string>
+    <string name="slogan">The Best Anime &amp; Manga app for Android.</string>
+    <string name="login">Login with Anilist</string>
+
     <string name="home">Home</string>
     <string name="anime">Anime</string>
     <string name="manga">Manga</string>
-    <string name="login">Login</string>
+
+    <string name="sad">X(</string>
+    <string name="no_internet">No Internet Connection</string>
+    <string name="refresh">Refresh</string>
 </resources>

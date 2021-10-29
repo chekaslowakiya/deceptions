@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ani.saikou.MainActivity
+import ani.saikou.startMainActivity
 import java.io.File
 
 var anilist : Anilist = Anilist()
@@ -19,9 +20,12 @@ class Anilist {
         context.startActivity(browserIntent)
     }
 
-    fun getSavedToken(context: Context){
-        if ("anilistToken" in context.fileList())
+    fun getSavedToken(context: Context):Boolean{
+        if ("anilistToken" in context.fileList()){
             token = File(context.filesDir, "anilistToken").readText()
+            return true
+        }
+        return false
     }
 }
 
@@ -34,8 +38,6 @@ class Login : AppCompatActivity() {
         this.openFileOutput(filename, Context.MODE_PRIVATE).use {
             it.write(anilist.token!!.toByteArray())
         }
-        val intent = Intent(this, MainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        this.startActivity(intent)
+        startMainActivity(this)
     }
 }

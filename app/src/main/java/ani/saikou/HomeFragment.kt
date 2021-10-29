@@ -15,10 +15,5 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewInset(view.findViewById(R.id.fragment_home))
-        val button = view.findViewById<Button>(R.id.button)
-        if (anilist.token==null)
-            button.setOnClickListener { anilist.loginIntent(requireContext()) }
-        else
-            button.visibility = View.GONE
     }
 }
