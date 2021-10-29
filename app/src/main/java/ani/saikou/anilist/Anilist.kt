@@ -8,6 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import ani.saikou.MainActivity
 import ani.saikou.startMainActivity
 import java.io.File
+import androidx.browser.customtabs.CustomTabsIntent
+
+
+
 
 var anilist : Anilist = Anilist()
 
@@ -16,8 +20,10 @@ class Anilist {
 
     fun loginIntent(context: Context){
         val clientID = 6818
-        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://anilist.co/api/v2/oauth/authorize?client_id=$clientID&response_type=code"))
-        context.startActivity(browserIntent)
+
+        val builder = CustomTabsIntent.Builder()
+        val customTabsIntent = builder.build()
+        customTabsIntent.launchUrl(context, Uri.parse("https://anilist.co/api/v2/oauth/authorize?client_id=$clientID&response_type=code"))
     }
 
     fun getSavedToken(context: Context):Boolean{
@@ -33,7 +39,7 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val data: Uri? = intent?.data
-        anilist.token = data.toString().replace("saikou://anilist?code=","")
+        anilist.token = Regex("""(?<=access_token=).+(?=&token_type)""").find(data.toString())!!.value
         val filename = "anilistToken"
         this.openFileOutput(filename, Context.MODE_PRIVATE).use {
             it.write(anilist.token!!.toByteArray())
