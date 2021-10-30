@@ -65,3 +65,10 @@ fun startMainActivity(activity: Activity){
     activity.finishAffinity()
     activity.startActivity(Intent(activity, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
 }
+
+enum class UserMediaStatus(val status:String) {
+    WATCHING("WATCHING"),                                    // 2
+    COMPLETED("COMPLETED"),
+    DROPPED("DROPPED"),
+    PLANNING("PLANNING");
+}

@@ -7,7 +7,17 @@
     <string name="anime">Anime</string>
     <string name="manga">Manga</string>
 
+    <string name="anime_list">Anime List</string>
+    <string name="manga_list">Manga List</string>
+
     <string name="sad">X(</string>
     <string name="no_internet">No Internet Connection</string>
     <string name="refresh">Refresh</string>
+
+    <string name="username">Username</string>
+    <string name="chapters_read">Chapters Read : </string>
+    <string name="episodes_watched">Episodes Watched : </string>
+    <string name="continue_reading">Continue Reading</string>
+    <string name="continue_watching">Continue Watching</string>
+    <string name="recommended">Recommended</string>
 </resources>

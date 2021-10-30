@@ -19,6 +19,11 @@ var anilist : Anilist = Anilist()
 class Anilist {
     val queries : AnilistQueries = AnilistQueries()
     var token : String? = null
+    var username : String? = null
+    var userid : Int? = null
+    var avatar : String? = null
+    var episodesWatched : Int? = null
+    var chapterRead : Int? = null
 
     fun loginIntent(context: Context){
         val clientID = 6818
@@ -48,21 +53,28 @@ class Anilist {
                 .post().body().text()
         }
     }
+
+    fun getUserData():Boolean{
+        val a = getQuery(queries.userData)
+        //TODO(JSON DEPRESSION)
+        return true
+    }
+
 }
 
 class AnilistQueries{
-    val userData ="""{Viewer {name avatar{medium}bannerImage id statistics{anime{count}manga{count}}}}"""
+    val userData ="""{Viewer {name avatar{medium}bannerImage id statistics{anime{episodesWatched}manga{chaptersRead}}}}"""
 
-    fun continueWatching(userId:String,type:String): String {
-        return """ { MediaListCollection(userId: $userId, type: $type, status: CURRENT) { lists { entries { progress status media { id status chapters episodes nextAiringEpisode {episode} meanScore coverImage{large} title { userPreferred } } } } } } """
+    fun continueWatching(userId:Int,type:String): String {
+        return """ { MediaListCollection(userId: $userId, type: $type, status: CURRENT) { lists { entries { progress status media { id status chapters episodes nextAiringEpisode {episode} meanScore coverImage{large} title { romaji userPreferred } } } } } } """
     }
-    fun animeList(userId:String,type:String): String {
-        return """{ MediaListCollection(userId: $userId, type: $type) { lists { name entries { score(format:POINT_100) media { id status chapters episodes nextAiringEpisode {episode} meanScore coverImage{large} title { userPreferred } } } } } }"""
+    fun animeList(userId:Int,type:String): String {
+        return """{ MediaListCollection(userId: $userId, type: $type) { lists { name entries { score(format:POINT_100) media { id status chapters episodes nextAiringEpisode {episode} meanScore coverImage{large} title { romaji userPreferred } } } } } }"""
     }
 
-    val recommendations = """ { Page(page: 1, perPage:25) { pageInfo { total currentPage hasNextPage } recommendations(sort: RATING_DESC, onList: true) { rating userRating mediaRecommendation { id title { userPreferred } format type status(version: 2) coverImage { large } } } } } """
+    val recommendations = """ { Page(page: 1, perPage:25) { pageInfo { total currentPage hasNextPage } recommendations(sort: RATING_DESC, onList: true) { rating userRating mediaRecommendation { id title { romaji userPreferred } format type status(version: 2) coverImage { large } } } } } """
 
-    fun coverImage(userId: String,type: String): String {
+    fun coverImage(userId: Int,type: String): String {
         return """ query ($userId: Int){ MediaListCollection(userId: $userId, type: $type, sort:[SCORE_DESC,UPDATED_TIME_DESC],chunk:1,perChunk:1) { lists { entries{ media { coverImage{large} } } } } } """
     }
 }
@@ -80,3 +92,4 @@ class Login : AppCompatActivity() {
         startMainActivity(this)
     }
 }
+
