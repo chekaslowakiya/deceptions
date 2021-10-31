@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeScroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
@@ -62,7 +63,7 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/homeEpisodesWatched"
+                            android:id="@+id/homeUserEpisodesWatched"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_bold"
@@ -84,7 +85,7 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/homeChaptersRead"
+                            android:id="@+id/homeUserChaptersRead"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_bold"
@@ -93,14 +94,6 @@
                     </LinearLayout>
 
                 </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_margin="8dp"
-                    android:src="@drawable/ic_round_settings_24"
-                    tools:ignore="ContentDescription" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -232,8 +225,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:padding="8dp"
                 android:fontFamily="@font/poppins_bold"
+                android:padding="8dp"
                 android:text="@string/continue_watching"
                 android:textSize="16sp" />
 
@@ -253,6 +246,10 @@
                     android:id="@+id/homeWatchingRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="true"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
                     tools:itemCount="4"
                     tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_compact"
@@ -270,8 +267,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:fontFamily="@font/poppins_bold"
-                android:text="@string/continue_reading"
                 android:padding="8dp"
+                android:text="@string/continue_reading"
                 android:textSize="16sp" />
 
             <FrameLayout
@@ -290,6 +287,9 @@
                     android:id="@+id/homeReadingRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
                     tools:itemCount="4"
                     tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_compact"
@@ -297,5 +297,9 @@
             </FrameLayout>
         </LinearLayout>
 
+        <Space
+            android:id="@+id/homeSpace"
+            android:layout_width="match_parent"
+            android:layout_height="128dp" />
     </LinearLayout>
 </ScrollView>

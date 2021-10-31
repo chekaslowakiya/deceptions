@@ -30,12 +30,13 @@ class MainActivity : AppCompatActivity() {
 
             //Load Data
             val navbar = findViewById<AnimatedBottomBar>(R.id.navbar)
-            val viewPager = findViewById<ViewPager2>(R.id.viewpager)
-
-            viewPager.adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
-            navbar.setupWithViewPager2(viewPager)
+            bottomBar = navbar
+            val mainViewPager = findViewById<ViewPager2>(R.id.viewpager)
+            mainViewPager.isUserInputEnabled = false
+            mainViewPager.adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
+            navbar.setupWithViewPager2(mainViewPager)
             navbar.selectTabAt(1)
-            viewPager.post { viewPager.setCurrentItem(1, false) }
+            mainViewPager.post { mainViewPager.setCurrentItem(1, false) }
         }
         else{
             //Login

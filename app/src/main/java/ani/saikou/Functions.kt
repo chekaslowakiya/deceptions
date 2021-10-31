@@ -12,11 +12,14 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import android.view.ViewGroup.MarginLayoutParams
-import androidx.core.app.ActivityCompat.finishAffinity
+import androidx.viewpager2.widget.ViewPager2
+import nl.joery.animatedbottombar.AnimatedBottomBar
 
 const val buildDebug = true
 
-fun logger(e:Any){
+lateinit var bottomBar: AnimatedBottomBar
+
+fun logger(e:Any?){
     if(buildDebug)
         println(e)
 }
@@ -65,10 +68,3 @@ fun startMainActivity(activity: Activity){
     activity.finishAffinity()
     activity.startActivity(Intent(activity, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
 }
-
-//enum class UserMediaStatus(val status:String) {
-//    WATCHING("WATCHING"),                                    // 2
-//    COMPLETED("COMPLETED"),
-//    DROPPED("DROPPED"),
-//    PLANNING("PLANNING");
-//}
