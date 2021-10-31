@@ -1,6 +1,6 @@
 package ani.saikou.manga
 
-import ani.saikou.UserMediaStatus
+//import ani.saikou.UserMediaStatus
 
 data class Manga (
     val name: String,
@@ -10,13 +10,13 @@ data class Manga (
     val cover: String,
     var banner: String? = null,
 
-    val ongoing: Boolean,
-    val meanScore: Int,
+    val status : String? = null,
+    val meanScore: Int?,
 
     var totalChapters: Int? = null,
 
     val userPreferredName: String,
     var userProgress: Int? = null,
-    var userStatus: UserMediaStatus? = null,
+    var userStatus: String? = null,
     var userScore: Int? = null,
 )

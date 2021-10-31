@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import ani.saikou.anilist.anilist
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -25,23 +27,24 @@ class HomeFragment : Fragment() {
         view.findViewById<View>(R.id.homeUserDataContainer).visibility = View.GONE
 
         GlobalScope.launch {
-            val lol = anilist.getUserData()
-            requireActivity().runOnUiThread{
-                view.findViewById<View>(R.id.homeUserDataProgressBar).visibility = View.GONE
-                view.findViewById<View>(R.id.homeUserDataContainer).visibility = View.VISIBLE
-                logger(lol)
+            val userData = anilist.queries.getUserData()
+            if (userData) {
+                requireActivity().runOnUiThread {
+                    view.findViewById<View>(R.id.homeUserDataProgressBar).visibility = View.GONE
+                    view.findViewById<View>(R.id.homeUserDataContainer).visibility = View.VISIBLE
+                }
             }
-        }
 
-        //Lists
-        GlobalScope.launch {
-//            TODO(anilist.getImage("ANIME or MANGA"))
-//            val animeImage = anilist.getQuery(anilist.queries.coverImage(anilist.userid!!,"ANIME"))
-//            val mangaImage = anilist.getQuery(anilist.queries.coverImage(anilist.userid!!,"MANGA"))
-//            requireActivity().runOnUiThread{
-//                Picasso.get().load(animeImage).into(view.findViewById<ImageView>(R.id.homeAnimeListImage))
-//                Picasso.get().load(mangaImage).into(view.findViewById<ImageView>(R.id.homeMangaListImage))
-//            }
+            //Lists
+            GlobalScope.launch {
+                val images = anilist.queries.getCoverImages()
+                requireActivity().runOnUiThread {
+                    Picasso.get().load(images[0])
+                        .into(view.findViewById<ImageView>(R.id.homeAnimeListImage))
+                    Picasso.get().load(images[1])
+                        .into(view.findViewById<ImageView>(R.id.homeMangaListImage))
+                }
+            }
         }
 
         //Continue Watching
