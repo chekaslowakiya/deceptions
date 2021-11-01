@@ -11,7 +11,7 @@ class AnilistViewModel : ViewModel() {
 
     private val listImages : MutableLiveData<ArrayList<String?>> = MutableLiveData<ArrayList<String?>>(arrayListOf())
     fun getListImages(): LiveData<ArrayList<String?>> = listImages
-    fun setListImages() = listImages.postValue(anilist.query.getCoverImages())
+    fun setListImages() = listImages.postValue(anilist.query.getBannerImages())
 
     private val animeContinue: MutableLiveData<ArrayList<Media>> = MutableLiveData<ArrayList<Media>>(null)
     fun getAnimeContinue(): LiveData<ArrayList<Media>> = animeContinue

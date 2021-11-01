@@ -4,13 +4,12 @@
     android:id="@+id/fragment_anime"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_black"
     tools:context=".AnimeFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.5"
+        android:alpha="0.58"
         android:text="@string/anime" />
 
 </FrameLayout>

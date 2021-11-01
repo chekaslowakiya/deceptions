@@ -57,7 +57,7 @@ class HomeFragment : Fragment(){
 
         GlobalScope.launch {
             //Get userData First
-            if (anilist.userid!==null) model.loadUserData()
+            if (anilist.userid==null) model.loadUserData()
             //get List Images in new Thread
             launch { if (!listImagesLoaded) model.setListImages() }
             //get Continue in new Thread
