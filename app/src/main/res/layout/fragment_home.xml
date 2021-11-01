@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/homeScroll"
@@ -11,6 +11,7 @@
         android:id="@+id/fragment_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
         android:orientation="vertical">
 
         <FrameLayout
@@ -82,7 +83,8 @@
                             android:alpha="0.58"
                             android:fontFamily="@font/poppins"
                             android:text="@string/chapters_read"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+                            tools:ignore="TextContrastCheck" />
 
                         <TextView
                             android:id="@+id/homeUserChaptersRead"
@@ -234,6 +236,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <LinearLayout
+                    android:id="@+id/homeWatchingEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="12dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:alpha="0.58"
+                        android:src="@drawable/ic_round_auto_awesome_24"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.58"
+                        android:text="@string/empty" />
+
+                    <Button
+                        android:id="@+id/homeWatchingBrowseButton"
+                        android:layout_width="128dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/browse_anime"
+                        tools:ignore="TextContrastCheck" />
+                </LinearLayout>
+
                 <ProgressBar
                     android:id="@+id/homeWatchingProgressBar"
                     style="?android:attr/progressBarStyle"
@@ -275,6 +308,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <LinearLayout
+                    android:id="@+id/homeReadingEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="12dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:alpha="0.58"
+                        android:src="@drawable/ic_round_auto_awesome_24"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.58"
+                        android:text="@string/empty" />
+
+                    <Button
+                        android:id="@+id/homeReadingBrowseButton"
+                        android:layout_width="128dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/browse_manga"
+                        tools:ignore="TextContrastCheck" />
+                </LinearLayout>
+
                 <ProgressBar
                     android:id="@+id/homeReadingProgressBar"
                     style="?android:attr/progressBarStyle"
@@ -297,9 +361,76 @@
             </FrameLayout>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="8dp"
+                android:text="@string/recommended"
+                android:textSize="16sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/homeRecommendedEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:alpha="0.58"
+                        android:src="@drawable/ic_round_auto_awesome_24"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.58"
+                        android:text="@string/get_recommendations"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/homeRecommendedProgressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="90dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/homeRecommendedRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    tools:itemCount="4"
+                    tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_compact"
+                    tools:orientation="horizontal" />
+            </FrameLayout>
+        </LinearLayout>
+
         <Space
             android:id="@+id/homeSpace"
             android:layout_width="match_parent"
             android:layout_height="128dp" />
+
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
